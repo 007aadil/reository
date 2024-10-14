@@ -1,6 +1,5 @@
-// SignUp.js
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Use useNavigate instead of useHistory
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +8,8 @@ const SignUp = () => {
     password: '',
     confirmPassword: ''
   });
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,24 +21,29 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Validate form data and handle signup logic here
+
     const { password, confirmPassword } = formData;
+    
     if (password !== confirmPassword) {
-      alert("Passwords do not match!");
+      setErrorMessage("Passwords do not match!");
       return;
     }
+
     // Implement your signup logic here (e.g., send data to the backend)
     console.log("Name:", formData.name);
     console.log("Email:", formData.email);
     console.log("Password:", password);
 
-    // Reset the form
+    // Reset the form and redirect to Donor/Acceptor page after successful signup
     setFormData({
       name: '',
       email: '',
       password: '',
       confirmPassword: ''
     });
+
+    // Simulate successful signup (replace this with your actual signup logic)
+    navigate('/donor-acceptor'); // Use navigate for redirection
   };
 
   return (
@@ -103,6 +109,10 @@ const SignUp = () => {
             </div>
           </div>
 
+          {errorMessage && (
+            <p className="text-red-600 text-sm mt-2">{errorMessage}</p>
+          )}
+
           <div>
             <button
               type="submit"
@@ -112,11 +122,12 @@ const SignUp = () => {
             </button>
           </div>
         </form>
+
         <div className="text-center">
           <p className="mt-2 text-sm text-gray-600">
             Already have an account?{' '}
             <Link to="/LoginPage" className="font-medium text-red-600 hover:text-red-700">
-              LoginPage
+              Login
             </Link>
           </p>
         </div>
@@ -126,3 +137,4 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
