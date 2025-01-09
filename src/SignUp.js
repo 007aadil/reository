@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Use useNavigate instead of useHistory
+import googleIcon from './assets/googleicon.jpg'; // Ensure this path is correct
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -43,13 +44,13 @@ const SignUp = () => {
     });
 
     // Simulate successful signup (replace this with your actual signup logic)
-    navigate('/donor-acceptor'); // Use navigate for redirection
+    navigate('/donor-details'); // Use navigate for redirection
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 p-8 bg-white shadow-md rounded-lg">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-red-600">Sign Up for Blood Benefactors</h2>
+        <h2 className="mt-6 text-center text-xl lg:text-3xl font-extrabold text-red-600">Sign Up for Blood Benefactors</h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Join our community and save lives!
         </p>
@@ -122,6 +123,16 @@ const SignUp = () => {
             </button>
           </div>
         </form>
+        <div className="mt-4">
+        <button
+                className="w-full py-2 px-4 flex items-center justify-center border border-red-300 rounded-md text-red-500 
+                hover:bg-red-500 hover:border-black hover:text-white "
+                 
+                >
+                <img src={googleIcon} alt="Google" className="h-6 w-6 mr-2 rounded-full" />
+                <span className="">Sign in with Google</span>
+              </button>
+        </div>
 
         <div className="text-center">
           <p className="mt-2 text-sm text-gray-600">
