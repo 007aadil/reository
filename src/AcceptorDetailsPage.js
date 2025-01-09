@@ -63,9 +63,20 @@ const AcceptorDetailsPage = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="max-w-4xl w-full bg-white p-8 shadow-lg rounded-lg overflow-hidden">
-        <h2 className="text-3xl font-extrabold text-red-600 text-center mb-8">
-          Acceptor Details
-        </h2>
+      <div className='flex flex-row justify-center mb-5 lg:gap-48'>
+        <div className='bg-red-600 px-5 w-40 lg:w-80 h-10 lg:h-12 py-1 rounded-lg cursor-pointer text-white
+        flex justify-center hover:border-2 hover:border-red-600 hover:bg-white hover:text-red-600'
+          onClick={()=>navigate('/donor-details')}>
+          <h2 className="text-xl lg:text-3xl font-semibold  text-center mb-8">
+          DONOR 
+          </h2>
+        </div>
+        <div className='w-40 lg:w-80 h-10 lg:h-12 py-1'>
+          <h2 className="text-xl lg:text-3xl font-semibold text-red-600 text-end mb-8">
+          Acceptor 
+          </h2>
+        </div>
+        </div>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>

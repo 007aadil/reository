@@ -87,7 +87,7 @@ const DonorDetailsPage = () => {
     }
 
     if (!formData.agreement) {
-      setErrorMessage('You must acknowledge that you are donating your blood with awareness.');
+      setErrorMessage('You must acknowledge that you are donating your blood with awareness.');                                        
       return;
     }
 
@@ -104,9 +104,20 @@ const DonorDetailsPage = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="max-w-4xl w-full bg-white p-8 shadow-lg rounded-lg overflow-hidden">
-        <h2 className="text-3xl font-extrabold text-red-600 text-center mb-8">
-          Donor Details
-        </h2>
+        <div className='flex flex-row justify-center mb-5 lg:gap-48 '>
+          <div className='w-40 lg:w-80 h-10 lg:h-12 py-1 '>
+            <h2 className="text-xl lg:text-3xl font-semibold text-red-600 mb-8">
+            Donor
+            </h2>
+          </div>
+          <div className='bg-red-600 text-white px-5 w-40 lg:w-80 h-10 lg:h-12 py-1 rounded-lg cursor-pointer 
+          flex justify-center hover:border-2 hover:border-red-600 hover:bg-white hover:text-red-600 '
+          onClick={()=>navigate('/acceptor-details')}>
+            <h2 className="text-xl lg:text-3xl font-semibold  text-center mb-8">
+              ACCEPTOR 
+            </h2>
+          </div>
+        </div>
         {errorMessage && <p className="text-red-500 text-center">{errorMessage}</p>}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { GoogleLogin } from 'react-google-login'; // Import GoogleLogin component
+//import { GoogleLogin } from 'react-google-login'; // Import GoogleLogin component
 import googleIcon from './assets/googleicon.jpg'; // Ensure this path is correct
+
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -26,16 +27,12 @@ const LoginPage = () => {
     }
   };
 
-  const responseGoogle = async (response) => {
-    console.log(response);
-    // Handle Google login response here
-    // You may want to send the response to your backend for verification
-  };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 p-8 bg-white shadow-md rounded-lg">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-red-600">Blood Benefactors Login</h2>
+        <h2 className="mt-6 text-center text-xl lg:text-3xl font-extrabold text-red-600">Blood Benefactors Login</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -76,29 +73,18 @@ const LoginPage = () => {
           </button>
         </form>
 
-        {/* Google Sign In Button */}
-        <div className="mt-4">
-          <GoogleLogin
-            clientId="YOUR_GOOGLE_CLIENT_ID" // Replace with your Google client ID
-            buttonText="Login with Google"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={'single_host_origin'}
-            render={renderProps => (
-              <button
-                className="w-full py-2 px-4 flex items-center justify-center border border-gray-300 rounded-md text-gray-700 hover:bg-gray-200"
-                onClick={renderProps.onClick} 
-                disabled={renderProps.disabled} 
-              >
-                <img src={googleIcon} alt="Google" className="h-6 w-6 mr-2" />
-                <span className="text-gray-700">Sign in with Google</span>
+        
+        <div className="mt-4">  
+          <button
+                className="w-full py-2 px-4 flex items-center justify-center border border-red-300 rounded-md text-red-500 
+                hover:bg-red-500 hover:border-black hover:text-white">
+                  <img src={googleIcon} alt="Google" className="h-6 w-6 mr-2 rounded-full" />
+                  <span className="">Sign in with Google</span>
               </button>
-            )}
-          />
         </div>
 
-        <div className="flex justify-between text-sm mt-4">
-          <Link to="/PasswordRecovery" className="text-red-500 hover:underline">
+        <div className="flex justify-between items-center text-sm mt-4 flex-col lg:flex-row">
+          <Link to="/password-recovery" className="text-red-500 hover:underline">
             Forgot password?
           </Link>
           <Link to="/signup" className="text-red-500 hover:underline">
